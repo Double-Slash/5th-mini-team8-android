@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.Patterns;
 
 import com.example.doubleslash.RequestHttpURLConnection_POST;
 import com.example.doubleslash.data.LoginRepository;
@@ -39,16 +38,16 @@ public class LoginViewModel extends ViewModel {
         return loginResult;
     }
 
-    public void login(String user_id, String password) {
+    public void login(String id, String password) {
 
         String url = "https://0c73c962765a.ngrok.io/user/login";
         JSONObject user_json = new JSONObject();
 
         // 로그인할 id와 password를 json으로 파싱하여 전송데이터 설정
         try {
-            user_json.accumulate("user_id", user_id);
+            user_json.accumulate("id", id);
             user_json.accumulate("password", password);
-            Log.e(Tag,user_id+", "+password);
+            Log.e(Tag,id+", "+password);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -57,27 +56,32 @@ public class LoginViewModel extends ViewModel {
         networkTask_POST.execute();
     }
 
+
     public void loginDataChanged(String username, String password) {
         if (!isUserNameValid(username)) {
             loginFormState.setValue(new LoginFormState(R.string.invalid_username, null));
-        } /*else if (!isPasswordValid(password)) {
-            loginFormState.setValue(new LoginFormState(null, R.string.invalid_password));
-        } else {
+        } //else if (!isPasswordValid(password)) {
+            //loginFormState.setValue(new LoginFormState(null, R.string.invalid_password));
+        //}
+        else {
             loginFormState.setValue(new LoginFormState(true));
-        }*/
+        }
     }
 
-    // A placeholder username validation check
+
+
     private boolean isUserNameValid(String username) {
         if (username == null) {
             return false;
         }
-        if (username.contains("@")) {
-            return Patterns.EMAIL_ADDRESS.matcher(username).matches();
-        } else {
+//        if (username.contains("@")) {
+//            return Patterns.EMAIL_ADDRESS.matcher(username).matches();
+//        } else {
             return !username.trim().isEmpty();
-        }
+//        }
     }
+
+
 
     // A placeholder password validation check
     /*private boolean isPasswordValid(String password) {
@@ -111,20 +115,18 @@ public class LoginViewModel extends ViewModel {
             // 로그인 API의 결과로 성공시 토큰 값, 실패시 Null값을 전달받음
             // 결과값은 s에 저장
 
-            Log.e(Tag,"h");
-
             //로그인 성공
             if (!TextUtils.isEmpty(s)) {
                 try {
                     // 결과값으로 넘어온 JWT 토큰 JSON값 파싱
                     JSONObject result_json = new JSONObject(s);
-                    JSONObject jwt_json = result_json.getJSONObject("jwt");
-                    String accessToken = jwt_json.getString("accessToken");
-                    String refreshToken = jwt_json.getString("refreshToken");
-                    Log.e(Tag,refreshToken);
+                    String accessToken = result_json.getString("token");
+                    //String refreshToken = jwt_json.getString("refreshToken");
+                    //Log.e(Tag,refreshToken);
+                    LoggedInUser.getLoggedInUser().setAccessToken(accessToken);
 
                     //date.getnickname 아직 null값
-                    result = loginRepository.login("aaa", "aaa");
+                    result = loginRepository.login("markllmark", "kimecr5p9253!!");
                     LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
                     loginResult.setValue(new LoginResult(new LoggedInUserView(data.getUserId())));
 //                    LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();

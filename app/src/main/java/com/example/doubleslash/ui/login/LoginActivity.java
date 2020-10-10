@@ -97,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 // ignore
             }
 
+
             @Override
             public void afterTextChanged(Editable s) {
                 loginViewModel.loginDataChanged(usernameEditText.getText().toString(),
@@ -157,7 +158,7 @@ public class LoginActivity extends AppCompatActivity {
         */
     }
 
-    private void showLoginFailed(@StringRes Integer errorString) {
+        private void showLoginFailed(@StringRes Integer errorString) {
         /*
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
         */
