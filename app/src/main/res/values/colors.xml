@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPoint">#FF4F48</color>
-    <color name="colorBasic">#FEFEFE</color>
+    <color name="colorWhite">#ffffff</color>
     <color name="colorGrey">#ACACAC</color>
     <color name="colorBlack">#1C1C1C</color>
+    <color name="textColorBlack">#de000000</color>
 </resources>
