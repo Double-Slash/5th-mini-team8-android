@@ -17,8 +17,15 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.doubleslash.R;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ManageRefActivity extends AppCompatActivity implements IngredientAdapter.OnItemClickListener{
 
@@ -28,13 +35,14 @@ public class ManageRefActivity extends AppCompatActivity implements IngredientAd
     private RecyclerView ingredient_view;
     private IngredientAdapter ingredientAdapter;
     private ArrayList<Ingredient> ingredients;
+    private String baseUrl = "https://84b616f25c2f.ngrok.io";
 
-//    Retrofit retrofit = new Retrofit.Builder()
-//            //서버 url
-////            .baseUrl("")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build();
-//    NetworkService api = retrofit.create(NetworkService.class);
+    Retrofit retrofit = new Retrofit.Builder()
+            //서버 url
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+    NetworkService api = retrofit.create(NetworkService.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,21 +60,21 @@ public class ManageRefActivity extends AppCompatActivity implements IngredientAd
         ingredient_view.setAdapter(ingredientAdapter);
     }
 
-//    public void updateIng() throws IOException {
-//        ArrayList<Ingredient> temparray;
-//        Response<JsonObject> call = api.getRefingredient("kai9702").execute();
-//        if(call.isSuccessful()){
-//            Log.e(Tag,"서버통신 성공");
-//            JsonObject body = call.body();
-//            JsonParser parser = new JsonParser();
-//            assert body != null;
-//            Log.e(Tag,body.toString());
-////            for(String name : body.keySet()){
-////
-////            }
-//        }
-//        Log.e(Tag,"냉장고 재료 가져오는 중");
-//    }
+    public void updateIng() throws IOException {
+        ArrayList<Ingredient> temparray;
+        Response<JsonObject> call = api.getRefingredient("kai9702").execute();
+        if(call.isSuccessful()){
+            Log.e(Tag,"서버통신 성공");
+            JsonObject body = call.body();
+            JsonParser parser = new JsonParser();
+            assert body != null;
+            Log.e(Tag,body.toString());
+//            for(String name : body.keySet()){
+//
+//            }
+        }
+        Log.e(Tag,"냉장고 재료 가져오는 중");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
