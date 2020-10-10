@@ -3,14 +3,15 @@
     package="com.example.doubleslash">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:theme="@style/AppTheme.NoActionBar">
 
         <activity
             android:name=".SplashActivity"
@@ -34,9 +35,16 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        <activity
+            android:name=".refrigerator.AddIngredientActivity"
+            android:label="@string/title_activity_add_ingredient"/>
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
+
         </activity>
-        <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".RegisterActivity" />
 
     </application>
 
