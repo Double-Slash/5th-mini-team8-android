@@ -6,18 +6,16 @@ package com.example.doubleslash.data.model;
 public class LoggedInUser {
 
     private String userId;
-    private String displayName;
+    private String password;
 
     public LoggedInUser(String userId, String displayName) {
+        this.password = password;
         this.userId = userId;
-        this.displayName = displayName;
     }
 
-    public String getUserId() {
-        return userId;
-    }
+    public String getUserId(){return userId;}
 
-    public String getDisplayName() {
-        return displayName;
+    public String getPassword() {
+        return password;
     }
 }

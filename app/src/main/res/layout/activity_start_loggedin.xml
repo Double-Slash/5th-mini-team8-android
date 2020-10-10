@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".StartActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:text="@string/main_welcome"
+        android:textSize="28sp"
+        android:textColor="#ff4f48"
+        android:gravity="center_horizontal"
+        android:layout_width="218dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginEnd="71dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:text="@string/main_detail"
+        android:gravity="center"
+        android:layout_width="146dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="107dp"
+        android:textSize="12sp"
+        android:textColor="#de000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+    <Button
+        android:id="@+id/startBtn"
+        android:layout_width="220dp"
+        android:layout_height="44dp"
+        android:background="@drawable/button_radius"
+        android:text="@string/main_start"
+        android:textSize="20sp"
+        android:textColor="#defefefe"
+        android:lineSpacingExtra="25sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

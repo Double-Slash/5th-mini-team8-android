@@ -19,13 +19,15 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.doubleslash.MainActivity;
 import com.example.doubleslash.R;
-import com.example.doubleslash.SignUpActivity;
-import com.example.doubleslash.StartActivity;
+import com.example.doubleslash.RegisterActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,12 +40,13 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = findViewById(R.id.ID);
+        final EditText usernameEditText = findViewById(R.id.user_id);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
-        final ProgressBar loadingProgressBar = findViewById(R.id.loading);
         final Button signUpBtn = findViewById(R.id.signUpBtn);
 
+
+        //로그인했는지
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {
@@ -60,16 +63,18 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //중요 서버통신 결과 받아서 display
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
             @Override
             public void onChanged(@Nullable LoginResult loginResult) {
                 if (loginResult == null) {
                     return;
                 }
-                loadingProgressBar.setVisibility(View.GONE);
                 if (loginResult.getError() != null) {
                     showLoginFailed(loginResult.getError());
                 }
+
+                //로그인 성공
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
                 }
@@ -106,6 +111,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     loginViewModel.login(usernameEditText.getText().toString(),
                             passwordEditText.getText().toString());
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);   //바로 냉장고관리로
+                    startActivity(intent);
+                    LoginActivity.this.finish();
                 }
                 return false;
             }
@@ -115,21 +123,20 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
 
-                Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);   //바로 냉장고관리로
                 startActivity(intent);
                 LoginActivity.this.finish();
-
             }
+
         });
 
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intent);
                 LoginActivity.this.finish();
             }
@@ -140,12 +147,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
+        /*
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        */
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
+        /*
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+        */
     }
 }
