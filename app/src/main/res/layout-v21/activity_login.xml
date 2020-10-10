@@ -61,7 +61,6 @@
         android:layout_marginTop="607dp"
         android:textSize="20sp"
         android:background="@drawable/button_radius"
-        android:enabled="false"
         android:text="@string/action_sign_in"
         android:textColor="@color/colorWhite"
         android:fontFamily="@font/notosanskr_medium"
