@@ -39,16 +39,16 @@ public class LoginViewModel extends ViewModel {
         return loginResult;
     }
 
-    public void login(String username, String password) {
+    public void login(String user_id, String password) {
 
-        String url = "";
+        String url = "https://0c73c962765a.ngrok.io/user/login";
         JSONObject user_json = new JSONObject();
 
         // 로그인할 id와 password를 json으로 파싱하여 전송데이터 설정
         try {
-            user_json.accumulate("id", username);
+            user_json.accumulate("user_id", user_id);
             user_json.accumulate("password", password);
-            Log.e(Tag,username+", "+password);
+            Log.e(Tag,user_id+", "+password);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -60,11 +60,11 @@ public class LoginViewModel extends ViewModel {
     public void loginDataChanged(String username, String password) {
         if (!isUserNameValid(username)) {
             loginFormState.setValue(new LoginFormState(R.string.invalid_username, null));
-        } else if (!isPasswordValid(password)) {
+        } /*else if (!isPasswordValid(password)) {
             loginFormState.setValue(new LoginFormState(null, R.string.invalid_password));
         } else {
             loginFormState.setValue(new LoginFormState(true));
-        }
+        }*/
     }
 
     // A placeholder username validation check
@@ -80,9 +80,9 @@ public class LoginViewModel extends ViewModel {
     }
 
     // A placeholder password validation check
-    private boolean isPasswordValid(String password) {
+    /*private boolean isPasswordValid(String password) {
         return password != null && password.trim().length() > 5;
-    }
+    }*/
 
     public class NetworkTask_POST extends AsyncTask<Void, Void, String> {
 
@@ -111,6 +111,8 @@ public class LoginViewModel extends ViewModel {
             // 로그인 API의 결과로 성공시 토큰 값, 실패시 Null값을 전달받음
             // 결과값은 s에 저장
 
+            Log.e(Tag,"h");
+
             //로그인 성공
             if (!TextUtils.isEmpty(s)) {
                 try {
@@ -122,7 +124,7 @@ public class LoginViewModel extends ViewModel {
                     Log.e(Tag,refreshToken);
 
                     //date.getnickname 아직 null값
-                    result = loginRepository.login("임시유저네임", "임시비밀번호");
+                    result = loginRepository.login("aaa", "aaa");
                     LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
                     loginResult.setValue(new LoginResult(new LoggedInUserView(data.getUserId())));
 //                    LoggedInUser loggedInUser = LoggedInUser.getLoggedInUser();

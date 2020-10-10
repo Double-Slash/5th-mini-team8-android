@@ -3,11 +3,16 @@ package com.example.doubleslash;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+
+import androidx.annotation.RequiresApi;
+
+import java.util.Objects;
 
 public class CustomDialog extends Dialog {
 
@@ -15,6 +20,7 @@ public class CustomDialog extends Dialog {
     private View.OnClickListener cancelListener;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +35,12 @@ public class CustomDialog extends Dialog {
         layoutParams.dimAmount = 0.4f;
 
         //dp로 변경하기
-        layoutParams.width = 762;
-        layoutParams.height = 265;
-        getWindow().setAttributes(layoutParams);
+        //Objects.requireNonNull(getWindow()).setAttributes(layoutParams);
 
-
+        final int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,300, getContext().getResources().getDisplayMetrics());
+        final int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,100, getContext().getResources().getDisplayMetrics());
+        layoutParams.width = width;
+        layoutParams.height = height;
 
 
 
