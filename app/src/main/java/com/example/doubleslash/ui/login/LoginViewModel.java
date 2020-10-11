@@ -111,14 +111,14 @@ public class LoginViewModel extends ViewModel {
             // 로그인 API의 결과로 성공시 토큰 값, 실패시 Null값을 전달받음
             // 결과값은 s에 저장
 
-            Log.e(Tag,"h");
+            Log.e(Tag,"h: "+s);
 
             //로그인 성공
             if (!TextUtils.isEmpty(s)) {
                 try {
                     // 결과값으로 넘어온 JWT 토큰 JSON값 파싱
                     JSONObject result_json = new JSONObject(s);
-                    JSONObject jwt_json = result_json.getJSONObject("jwt");
+                    JSONObject jwt_json = result_json.getJSONObject("data");
                     String accessToken = jwt_json.getString("accessToken");
                     String refreshToken = jwt_json.getString("refreshToken");
                     Log.e(Tag,refreshToken);

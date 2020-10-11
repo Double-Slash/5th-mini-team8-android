@@ -26,3 +26,10 @@ class Ingredient{
 //        this.thumbnail = thumbnail;
 //    }
 }
+
+class RequestUser{
+    private String userId;
+    public RequestUser(String userId){
+        this.userId = userId;
+    }
+}

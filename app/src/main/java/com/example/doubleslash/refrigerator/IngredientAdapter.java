@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -69,14 +70,12 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private LinearLayout ingredientView;
-//        private ImageView img_thumb;
+        private ConstraintLayout ingredientView;
         private TextView txt_name;
 
         public ViewHolder(View convertView) {
             super(convertView);
             ingredientView = convertView.findViewById(R.id.ingredient_view);
-//            img_thumb = convertView.findViewById(R.id.ingredient_img);
             txt_name = convertView.findViewById(R.id.ingredient_name);
         }
     }

@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.example.doubleslash.MainActivity;
 import com.example.doubleslash.R;
 import com.example.doubleslash.RegisterActivity;
+import com.example.doubleslash.refrigerator.ManageRefActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -114,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     loginViewModel.login(usernameEditText.getText().toString(),
                             passwordEditText.getText().toString());
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);   //바로 냉장고관리로
+                    Intent intent = new Intent(getApplicationContext(), ManageRefActivity.class);   //바로 냉장고관리로
                     startActivity(intent);
                     LoginActivity.this.finish();
                 }
@@ -130,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);   //바로 냉장고관리로
+                Intent intent = new Intent(getApplicationContext(), ManageRefActivity.class);   //바로 냉장고관리로
                 startActivity(intent);
                 LoginActivity.this.finish();
             }

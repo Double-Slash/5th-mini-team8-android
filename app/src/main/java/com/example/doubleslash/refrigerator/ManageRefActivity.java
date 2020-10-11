@@ -17,24 +17,45 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.doubleslash.R;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONArray;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.Request;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 
 public class ManageRefActivity extends AppCompatActivity implements IngredientAdapter.OnItemClickListener{
 
     private static final String Tag = "ManageRef";
+    private static final String baseurl = "https://0c73c962765a.ngrok.io";
 
     private Context mContext = this;
     private RecyclerView ingredient_view;
     private IngredientAdapter ingredientAdapter;
     private ArrayList<Ingredient> ingredients;
 
-//    Retrofit retrofit = new Retrofit.Builder()
-//            //서버 url
-////            .baseUrl("")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build();
-//    NetworkService api = retrofit.create(NetworkService.class);
+    Retrofit retrofit = new Retrofit.Builder()
+            //서버 url
+            .baseUrl(baseurl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+    NetworkService api = retrofit.create(NetworkService.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +70,40 @@ public class ManageRefActivity extends AppCompatActivity implements IngredientAd
         ingredient_view.addItemDecoration(new ItemDecoration(this));
         ingredientAdapter = new IngredientAdapter(mContext, getIngredientArray());
         ingredientAdapter.setOnItemClickListener(this);
+        updateIng();
         ingredient_view.setAdapter(ingredientAdapter);
     }
 
-//    public void updateIng() throws IOException {
-//        ArrayList<Ingredient> temparray;
-//        Response<JsonObject> call = api.getRefingredient("kai9702").execute();
-//        if(call.isSuccessful()){
-//            Log.e(Tag,"서버통신 성공");
+    Callback<JsonObject> callback = new Callback<JsonObject>(){
+        @Override
+        public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+            Log.e(Tag,"서버통신 성공");
+            Log.e(Tag,response.body().toString());
+            List<Ingredient> temparray = null;
+            JsonObject rootObj = response.body().getAsJsonObject("data");
+            if(rootObj != null){
+                Gson gson = new GsonBuilder().create();
+                TypeToken<List<Ingredient>> typeToken = new TypeToken<List<Ingredient>>(){};
+                Type type = typeToken.getType();
+                temparray = gson.fromJson(rootObj, type);
+            }
+            else{
+                Log.e(Tag, "failed");
+            }
+        }
+
+        @Override
+        public void onFailure(Call<JsonObject> call, Throwable t) {
+            Log.e(Tag,"Callback onFailure");
+        }
+    };
+
+
+
+    public ArrayList<Ingredient> updateIng(){
+        ArrayList<Ingredient> arrayList = api.getRefingredient().enqueue(callback);
+
+//        }if(call.isSuccessful()){
 //            JsonObject body = call.body();
 //            JsonParser parser = new JsonParser();
 //            assert body != null;
@@ -64,9 +111,8 @@ public class ManageRefActivity extends AppCompatActivity implements IngredientAd
 ////            for(String name : body.keySet()){
 ////
 ////            }
-//        }
-//        Log.e(Tag,"냉장고 재료 가져오는 중");
-//    }
+        Log.e(Tag,"냉장고 재료 가져오는 중");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

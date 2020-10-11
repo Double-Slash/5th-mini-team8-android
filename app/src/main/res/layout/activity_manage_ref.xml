@@ -50,14 +50,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="#defefefe"
-            android:lineSpacingExtra="25sp"
-            android:gravity="center_horizontal"
-            tools:text="뭐 먹지?"
-            />
+
     </Button>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#defefefe"
+        android:lineSpacingExtra="25sp"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="20dp"
+        android:elevation="2dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="뭐 먹지?"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
