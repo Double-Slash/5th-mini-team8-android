@@ -70,7 +70,7 @@ public class ManageRefActivity extends AppCompatActivity implements IngredientAd
         ingredient_view.addItemDecoration(new ItemDecoration(this));
         ingredientAdapter = new IngredientAdapter(mContext, getIngredientArray());
         ingredientAdapter.setOnItemClickListener(this);
-        updateIng();
+//        updateIng();
         ingredient_view.setAdapter(ingredientAdapter);
     }
 
@@ -100,19 +100,19 @@ public class ManageRefActivity extends AppCompatActivity implements IngredientAd
 
 
 
-    public ArrayList<Ingredient> updateIng(){
-        ArrayList<Ingredient> arrayList = api.getRefingredient().enqueue(callback);
-
-//        }if(call.isSuccessful()){
-//            JsonObject body = call.body();
-//            JsonParser parser = new JsonParser();
-//            assert body != null;
-//            Log.e(Tag,body.toString());
-////            for(String name : body.keySet()){
-////
-////            }
-        Log.e(Tag,"냉장고 재료 가져오는 중");
-    }
+//    public ArrayList<Ingredient> updateIng(){
+////        ArrayList<Ingredient> arrayList = api.getRefingredient().enqueue(callback);
+//
+////        }if(call.isSuccessful()){
+////            JsonObject body = call.body();
+////            JsonParser parser = new JsonParser();
+////            assert body != null;
+////            Log.e(Tag,body.toString());
+//////            for(String name : body.keySet()){
+//////
+//////            }
+//        Log.e(Tag,"냉장고 재료 가져오는 중");
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -46,24 +46,14 @@
         android:layout_width="296dp"
         android:layout_height="44dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_redbt"
+        android:background="@drawable/button_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-
-    </Button>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="#defefefe"
-        android:lineSpacingExtra="25sp"
-        android:gravity="center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="20dp"
-        android:elevation="2dp"
         app:layout_constraintRight_toRightOf="parent"
-        tools:text="뭐 먹지?"
-        />
+        android:textSize="20sp"
+        android:includeFontPadding="false"
+        android:text="뭐 먹지?"
+        android:textColor="@color/colorWhite"
+        android:fontFamily="@font/notosanskr_medium">
+    </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>
