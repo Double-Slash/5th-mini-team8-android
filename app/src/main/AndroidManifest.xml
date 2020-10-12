@@ -29,6 +29,12 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".refrigerator.AddIngredientActivity">
+
+        </activity>
+        <activity android:name=".refrigerator.ManageRefActivity">
+
+        </activity>
 
     </application>
 

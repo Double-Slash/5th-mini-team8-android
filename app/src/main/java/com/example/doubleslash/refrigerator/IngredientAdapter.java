@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.doubleslash.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class IngredientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -24,17 +25,11 @@ public class IngredientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     public OnItemClickListener mOnItemClickListener = null;
     private Context mContext;
-    private ArrayList<Ingredient> ingredients;
+    private List<Ingredient> ingredients;
 
-    public IngredientAdapter(Context mContext, ArrayList<Ingredient> ingredients) {
+    public IngredientAdapter(Context mContext, List<Ingredient> ingredients) {
         this.mContext = mContext;
         this.ingredients = ingredients;
-        ingredients.add(getItemCount(), new Ingredient("last_one"));
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mOnItemClickListener = listener;
-        Log.e(Tag,"1");
     }
 
     @Override
@@ -47,6 +42,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             view = inflater.inflate(R.layout.ref_ingredient_last_one, parent, false);
             return new LastViewHolder(view);
         }
+
         else{
             view = inflater.inflate(R.layout.ref_ingredient_item, parent, false);
             return new itemViewHolder(view);
@@ -79,7 +75,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     //아이템 삭제하기
                     ingredients.remove(position);
                     //서버통신으로 알려주기
-
+                    Log.e(Tag,"ingdeleteBtn");
                 }
             });
         }

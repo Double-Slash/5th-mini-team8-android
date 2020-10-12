@@ -4,14 +4,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.doubleslash.R;
-
-import org.w3c.dom.Text;
 
 public class AddIngredientActivity extends AppCompatActivity {
 
@@ -20,7 +17,6 @@ public class AddIngredientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ingredient);
-//        init();
 
         Button search_button = findViewById(R.id.search_button);
         Button ingredient_addBt = findViewById(R.id.ingredient_addBt);
@@ -47,7 +43,4 @@ public class AddIngredientActivity extends AppCompatActivity {
         });
     }
 
-    private void init() {
-
-    }
 }
