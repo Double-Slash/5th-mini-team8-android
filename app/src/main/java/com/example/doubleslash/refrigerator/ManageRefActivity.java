@@ -10,13 +10,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.service.autofill.UserData;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.doubleslash.R;
+import com.example.doubleslash.data.UserRefData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -48,7 +51,7 @@ public class ManageRefActivity extends AppCompatActivity implements IngredientAd
     private Context mContext = this;
     private RecyclerView ingredient_view;
     private IngredientAdapter ingredientAdapter;
-    private ArrayList<Ingredient> ingredients;
+    private UserRefData userRefData;
 
     Retrofit retrofit = new Retrofit.Builder()
             //서버 url
@@ -61,9 +64,6 @@ public class ManageRefActivity extends AppCompatActivity implements IngredientAd
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_ref);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("냉장고 관리");
         ingredient_view = findViewById(R.id.ingredientView);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(mContext, 3);
         ingredient_view.setLayoutManager(layoutManager);
@@ -72,6 +72,13 @@ public class ManageRefActivity extends AppCompatActivity implements IngredientAd
         ingredientAdapter.setOnItemClickListener(this);
 //        updateIng();
         ingredient_view.setAdapter(ingredientAdapter);
+
+        Button what_to_eatBtn = findViewById(R.id.what_to_eatBtn);
+        what_to_eatBtn.setOnClickListener(view -> {
+            //나중에 수정
+//            startActivity(new Intent(getApplicationContext(), AddIngredientActivity.class));
+            //finish()로 죽이지 않는다, 뒤로가기로 돌아올 수 있어야 함
+        });
     }
 
     Callback<JsonObject> callback = new Callback<JsonObject>(){
@@ -114,35 +121,20 @@ public class ManageRefActivity extends AppCompatActivity implements IngredientAd
 //        Log.e(Tag,"냉장고 재료 가져오는 중");
 //    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_manage_ref, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if(id == R.id.GotoAI){
-            startActivity(new Intent(getApplicationContext(), AddIngredientActivity.class));
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     //리사이클러뷰 테스트용 하드코딩
     private ArrayList<Ingredient> getIngredientArray() {
         ArrayList<Ingredient> temparray = new ArrayList<>();
-        temparray.add(new Ingredient("누룽지 두부 계란죽", "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00016_2.png"));
-        temparray.add(new Ingredient("칼륨 듬뿍 고구마죽", "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00017_2.png"));
-        temparray.add(new Ingredient("오렌지 당근펀치", "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00108_2.png"));
-        temparray.add(new Ingredient("오색지라시 스시", "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00009_2.png"));
-        Log.e(Tag,"getIngredientArray 2 "+temparray.get(2).getIngredients_name());
         return temparray;
     }
 
     @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    @Override
     public void onItemClick(View view, Ingredient ingredient) {
-        Log.e("RecyclerVIew :: ", ingredient.toString());
+        Log.e(Tag,"1");
     }
 }

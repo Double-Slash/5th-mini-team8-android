@@ -16,10 +16,7 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".StartActivity">
 
@@ -31,9 +28,14 @@
 
         </activity>
         <activity
-            android:name=".refrigerator.AddIngredientActivity"
-            android:label="@string/title_activity_add_ingredient"/>
+            android:name=".refrigerator.AddIngredientActivity">
+
+        </activity>
         <activity android:name=".refrigerator.ManageRefActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".MainActivity" />

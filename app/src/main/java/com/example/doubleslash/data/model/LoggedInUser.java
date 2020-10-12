@@ -8,6 +8,8 @@ public class LoggedInUser {
     private String userId;
     private String password;
 
+
+
     public LoggedInUser(String userId, String displayName) {
         this.password = password;
         this.userId = userId;
