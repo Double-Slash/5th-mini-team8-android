@@ -1,17 +1,8 @@
 package com.example.doubleslash.ui.login;
 
 import android.app.Activity;
-
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -21,14 +12,16 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.doubleslash.MainActivity;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.example.doubleslash.R;
 import com.example.doubleslash.RegisterActivity;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.doubleslash.refrigerator.ManageRefActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -115,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     loginViewModel.login(usernameEditText.getText().toString(),
                             passwordEditText.getText().toString());
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);   //바로 냉장고관리로
+                    Intent intent = new Intent(getApplicationContext(), ManageRefActivity.class);   //바로 냉장고관리로
                     startActivity(intent);
                     LoginActivity.this.finish();
                 }
@@ -131,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);   //바로 냉장고관리로
+                Intent intent = new Intent(getApplicationContext(), ManageRefActivity.class);   //바로 냉장고관리로
                 startActivity(intent);
                 LoginActivity.this.finish();
             }
