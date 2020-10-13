@@ -14,22 +14,44 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doubleslash.R;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class IngredientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final String Tag = "IngredientAdapter";
-    private final int IsLastOne = 0;
+    private final int IsLastOne = 1;
 
     public OnItemClickListener mOnItemClickListener = null;
     private Context mContext;
     private List<Ingredient> ingredients;
+    private NetworkService api;
 
-    public IngredientAdapter(Context mContext, List<Ingredient> ingredients) {
+    public IngredientAdapter(Context mContext, List<Ingredient> ingredients, NetworkService api) {
         this.mContext = mContext;
         this.ingredients = ingredients;
+        this.api = api;
+    }
+
+    public List<Ingredient> getIngredients(){
+        return ingredients;
     }
 
     @Override
@@ -40,6 +62,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         if(viewType == IsLastOne){
             view = inflater.inflate(R.layout.ref_ingredient_last_one, parent, false);
+            Log.e(Tag,"hi");
             return new LastViewHolder(view);
         }
 
@@ -68,14 +91,29 @@ public class IngredientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
         else{
             ((itemViewHolder) holder).txt_name.setText(bindedingredient.getIngredients_name());
-//            ((itemViewHolder) holder).ingredientView.setOnClickListener(v -> mOnItemClickListener.onItemClick(v, bindedingredient));
             ((itemViewHolder) holder).ingdeleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //아이템 삭제하기
-                    ingredients.remove(position);
-                    //서버통신으로 알려주기
-                    Log.e(Tag,"ingdeleteBtn");
+                    api.deleteRefingredient(getIngredients().get(position).getIngredients_name()).enqueue(new Callback<JsonObject>() {
+                        @Override
+                        public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                            if(response.isSuccessful()){ //response.code()
+                                Log.e(Tag,response.body().toString());
+                                //아이템 삭제하기
+                                ingredients.remove(position);
+                                //삭제된 아이템만 새로 뷰 업데이트
+                                notifyItemRemoved(position);
+//                                notifyItemRangeChanged(position, ingredients.size());
+                            }
+                            else{
+                                Log.e(Tag,"onResponse: 아이템 삭제에 실패했습니다.");
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<JsonObject> call, Throwable t) {
+                            Log.e(Tag,"아이템 삭제에 실패했습니다.");
+                        }
+                    });
                 }
             });
         }
@@ -83,7 +121,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public int getItemViewType(int position) {
-        if(position == getItemCount()){
+        if(position == ingredients.size()-1){
             return IsLastOne;
         }
         else{

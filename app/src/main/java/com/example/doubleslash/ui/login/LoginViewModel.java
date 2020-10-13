@@ -40,7 +40,7 @@ public class LoginViewModel extends ViewModel {
 
     public void login(String id, String password) {
 
-        String url = "https://0c73c962765a.ngrok.io/user/login";
+        String url = "https://cc29bf082746.ngrok.io/login";
         JSONObject user_json = new JSONObject();
 
         // 로그인할 id와 password를 json으로 파싱하여 전송데이터 설정
@@ -55,7 +55,6 @@ public class LoginViewModel extends ViewModel {
         NetworkTask_POST networkTask_POST = new NetworkTask_POST(url, user_json.toString());
         networkTask_POST.execute();
     }
-
 
     public void loginDataChanged(String username, String password) {
         if (!isUserNameValid(username)) {
