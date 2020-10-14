@@ -26,7 +26,8 @@ public interface NetworkService {
     @Headers("authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFhYSIsImlhdCI6MTYwMjMyMDg5Mn0.TMsF23gELkCIBBy024OmuPEgQ73pe6Pz19l2mv-bqS4")
     Call<JsonObject> deleteRefingredient(@Field("ingredient") String string);
 
-    @POST
+    @POST("/ref/searchIn")
     @FormUrlEncoded
+    @Headers("authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFhYSIsImlhdCI6MTYwMjMyMDg5Mn0.TMsF23gELkCIBBy024OmuPEgQ73pe6Pz19l2mv-bqS4")
     Call<JsonObject> getSearchedResult(@Field("ingredient") String name);
 }

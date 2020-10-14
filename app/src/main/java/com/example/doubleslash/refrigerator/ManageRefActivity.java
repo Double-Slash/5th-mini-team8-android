@@ -22,9 +22,6 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.function.Predicate;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,7 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ManageRefActivity extends AppCompatActivity implements IngredientAdapter.OnItemClickListener{
 
     private static final String Tag = "ManageRef";
-    private static final String baseurl = "https://cc29bf082746.ngrok.io";
+    private static final String baseurl = "http://ec2-13-209-4-72.ap-northeast-2.compute.amazonaws.com:3000";
 
     private Context mContext = this;
     private RecyclerView ingredient_view;

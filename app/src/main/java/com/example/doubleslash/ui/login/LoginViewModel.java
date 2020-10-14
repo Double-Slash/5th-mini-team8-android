@@ -40,7 +40,7 @@ public class LoginViewModel extends ViewModel {
 
     public void login(String id, String password) {
 
-        String url = "https://cc29bf082746.ngrok.io/login";
+        String url = "http://ec2-13-209-4-72.ap-northeast-2.compute.amazonaws.com:3000/login";
         JSONObject user_json = new JSONObject();
 
         // 로그인할 id와 password를 json으로 파싱하여 전송데이터 설정
