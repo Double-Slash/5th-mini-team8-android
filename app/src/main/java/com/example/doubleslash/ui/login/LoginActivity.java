@@ -20,7 +20,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.doubleslash.R;
-import com.example.doubleslash.RegisterActivity;
+import com.example.doubleslash.register.RegisterActivity;
 import com.example.doubleslash.refrigerator.ManageRefActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -128,7 +128,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
                 LoginActivity.this.finish();
             }
-
         });
 
         signUpBtn.setOnClickListener(new View.OnClickListener() {

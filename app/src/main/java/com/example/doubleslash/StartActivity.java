@@ -1,14 +1,20 @@
 package com.example.doubleslash;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +23,7 @@ import com.example.doubleslash.ui.login.LoginActivity;
 
 public class StartActivity extends AppCompatActivity {
 
-    private CustomDialog customDialog;
+    private CustomDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +46,8 @@ public class StartActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                customDialog = new CustomDialog(StartActivity.this, cancelListener);
-                customDialog.setCanceledOnTouchOutside(true);
-                customDialog.setCancelable(true);
-                customDialog.show();
+                    dialog = new CustomDialog(StartActivity.this, cancelListener);
+                    dialog.createDialog(dialog);
                 }
         });
 
@@ -59,9 +63,10 @@ public class StartActivity extends AppCompatActivity {
 
     }
 
+
     private View.OnClickListener cancelListener = new View.OnClickListener() {
         public void onClick(View v) {
-            customDialog.dismiss();
+            dialog.dismiss();
         }
     };
 
