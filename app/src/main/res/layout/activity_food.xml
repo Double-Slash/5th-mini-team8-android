@@ -14,7 +14,7 @@
         android:gravity="center_horizontal"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="48dp"
-        tools:text="뭐 먹지?"
+        android:text="뭐 먹지?"
         />
 
     <!-- A RecyclerView with some commonly used attributes -->
