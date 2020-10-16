@@ -1,10 +1,12 @@
-package com.example.fooda;
+package com.example.doubleslash.recipe;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.doubleslash.R;
 
 public class FoodActivity extends AppCompatActivity {
 

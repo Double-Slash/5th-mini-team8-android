@@ -1,4 +1,4 @@
-package com.example.fooda;
+package com.example.doubleslash.recipe;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.doubleslash.R;
 
 import java.util.ArrayList;
 import java.util.List;

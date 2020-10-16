@@ -1,8 +1,9 @@
-package com.example.fooda;
-
+package com.example.doubleslash.recipe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.doubleslash.R;
 
 public class food_recipe extends AppCompatActivity {
 

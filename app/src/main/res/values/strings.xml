@@ -29,4 +29,40 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_manage_ref">ScrollingActivity</string>
+
+    <string-array name="food">
+        <item>떡볶이</item>
+        <item>돈까스</item>
+        <item>볶음밥</item>
+    </string-array>
+
+    <string-array name="kcal">
+        <item>1kcal</item>
+        <item>2kcal</item>
+        <item>3kcal</item>
+    </string-array>
+
+    <string-array name="ng">
+        <item>1ng</item>
+        <item>2ng</item>
+        <item>3ng</item>
+    </string-array>
+
+    <string-array name="ng1">
+        <item>11ng</item>
+        <item>22ng</item>
+        <item>33ng</item>
+    </string-array>
+
+    <string-array name="nmg">
+        <item>1nmg</item>
+        <item>2nmg</item>
+        <item>3nmg</item>
+    </string-array>
+
+    <string-array name="ing">
+        <item>떡,오뎅,고추장</item>
+        <item>고기,튀김가루</item>
+        <item>밥,계란,야채</item>
+    </string-array>
 </resources>
