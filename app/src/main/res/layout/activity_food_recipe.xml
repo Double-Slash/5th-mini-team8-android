@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".food_recipe">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            app:srcCompat="?android:attr/textSelectHandleLeft" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="86dp"
+            android:lineSpacingExtra="9sp"
+            android:textColor="#dd000000"
+            android:textSize="15sp"
+            tools:text="레시피를 입력하세요. 레시피를 입력하세요.레시피를 입력하세요.
+            레시피를 입력하세요.레시피를 입력하세요. 레시피를 입력하세요."
+            android:layout_weight="4" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

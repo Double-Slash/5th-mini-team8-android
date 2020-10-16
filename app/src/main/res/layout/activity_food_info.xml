@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".food_info">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/mainImageView"
+            android:layout_width="match_parent"
+            android:layout_height="321dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="479dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/background_round"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="-8sp"
+                android:textColor="#1c1c1c"
+                android:textSize="26sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginRight="13dp"
+                        android:background="@drawable/background_text"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="2sp"
+                        android:textColor="#1c1c1c"
+                        android:textSize="16sp"
+                        tools:text="칼로리" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="13dp"
+                        android:background="@drawable/background_text"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="2sp"
+                        android:textColor="#1c1c1c"
+                        android:textSize="16sp"
+                        tools:text="단백질" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="13dp"
+                        android:background="@drawable/background_text"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="2sp"
+                        android:textColor="#1c1c1c"
+                        android:textSize="16sp"
+                        tools:text="지방 " />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="13dp"
+                        android:background="@drawable/background_text"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="2sp"
+                        android:textColor="#1c1c1c"
+                        android:textSize="16sp"
+                        tools:text="나트륨" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="bottom">
+
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="43dp"
+                        android:layout_height="32dp"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="2sp"
+                        android:textColor="#de000000"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="46dp"/>
+
+                    <TextView
+                        android:id="@+id/description1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="2sp"
+                        android:textColor="#de000000"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="70dp"/>
+
+                    <TextView
+                        android:id="@+id/description2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="2sp"
+                        android:textColor="#de000000"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="65dp"/>
+
+                    <TextView
+                        android:id="@+id/description3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="2sp"
+                        android:textColor="#de000000"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="60dp"/>
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="222dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="14dp">
+
+                <TextView
+                    android:id="@+id/ing"
+                    android:layout_width="248dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@drawable/background_text"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="2sp"
+                    android:textColor="#1c1c1c"
+                    android:textSize="16sp"
+                    tools:text="재료" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="84dp"
+                    android:layout_height="217dp"
+                    android:onClick="onButtonClick"
+                    android:shadowColor="#ddfefefe"
+                    android:text="레시피" />
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
